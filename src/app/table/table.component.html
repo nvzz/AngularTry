@@ -1,0 +1,53 @@
+<main>
+  <div class="container">
+    <div class="row all-elements">
+      <div class="col-12 col-md-8 table-element">
+        <table class="table"  >
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let infoList of listNames">
+              <td> {{infoList.name}} </td>
+              <td> {{infoList.age}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="col-6 col-md-4 form-element">
+        <form #formData="ngForm" (ngSubmit)="addData(); formData.reset();">
+
+          <div class="row space">
+            <div class="col-12">
+              <label>Name:</label>
+              <input type="text" name="name" id="name" #name="ngModel" [(ngModel)]="listNames.name" required pattern="[A-Za-z]+">
+            </div>
+          </div>
+
+          <span *ngIf="name.dirty && !name.valid">*Just letters, please</span>
+
+          <div class="row space">
+              <div class="col-12">
+                <label>Age:</label>
+                <input type="text" name="age" id="age" #age="ngModel" [(ngModel)]="listNames.age" required pattern="[0-9]{1,2}" >
+              </div>
+          </div>
+
+          <span *ngIf="age.dirty && !age.valid">*At most two numbers, please</span>
+          <br>
+          <span *ngIf="name.dirty && !name.valid && age.dirty && !age.valid">*Please fill all the blank spaces</span>
+
+          <div class="row">
+            <div class="col-12 button">
+              <input class="btn btn-primary btn-block" type="submit" value="Add" [disabled] = "!formData.form.valid">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>

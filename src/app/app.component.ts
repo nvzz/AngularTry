@@ -10,10 +10,7 @@ export class AppComponent implements OnInit{
   
   title: string = 'FED Academy';
   
-  
-  constructor(){ 
-    
-   }
+  constructor(){ }
 
   listNames: INames[] = [
     {
@@ -44,12 +41,6 @@ export class AppComponent implements OnInit{
 
   }
 
-  
-
-
-
-  ngOnInit() : void {
-    
-  }
+  ngOnInit() : void { }
   
 }
